@@ -1,0 +1,114 @@
+<html>
+
+<head>
+    <title>firebase editable table </title>
+    <style>
+        table,thead,tr,th,tbody,td{
+            border: solid black 1px ;
+            padding: 5px;
+            border-collapse: collapse;
+            background-color: blanchedalmond;
+            font-size: large;
+            padding: 20px;
+            margin-left:38%;
+            margin-top: 6%;
+
+        }
+    </style>
+</head>
+
+<body>
+<h1 style="margin-left:42%;">Previous History</h1>
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Pwd</th>
+                <th scope="col">Sec</th>
+                <th scope="col">College</th>
+            </tr>
+        </thead>
+        <tbody id='dataTbl'>
+        </tbody>
+    </table>
+    </div>
+
+
+</body>
+
+</html>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js";
+    import { getDatabase, set, ref, push, child, onValue } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-database.js";
+
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyCVJj-80PRz84oOYFLwbAias0i-6w5HNc4",
+        authDomain: "csv-to-db.firebaseapp.com",
+        databaseURL: "https://csv-to-db-default-rtdb.firebaseio.com",
+        projectId: "csv-to-db",
+        storageBucket: "csv-to-db.appspot.com",
+        messagingSenderId: "273924515346",
+        appId: "1:273924515346:web:eebd725cf49339925fdacb",
+        measurementId: "G-9J1ZQPBRSL"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+
+    // Get a reference to the database service
+    const database = getDatabase(app);
+
+    // write data
+    //   submit.addEventListener('click',(e) => {
+    //     var firstName = document.getElementById('first-name').value;  
+    //     var lastName = document.getElementById('last-name').value;  
+    //     var email = document.getElementById('email').value;  
+
+    //     const userId = push(child(ref(database), 'users')).key;
+
+    //     set(ref(database, 'users/' + userId), {
+    //     firstName: firstName,
+    //     lastName: lastName,
+    //     email : email
+    //    });
+    //    alert('saved');
+    //   });
+
+    // read data
+    //   getData.addEventListener('click',(e) => {
+
+    $('#dataTbl td').remove();
+    var rowNum = 0;
+    const dbRef = ref(database, '1BQeq029VXkCMQ0uMaA_FcVzEaR7s4tIyo-4k-SAferE/Sheet1/');
+
+    onValue(dbRef, (snapshot) => {
+        snapshot.forEach((childSnapshot) => {
+            const childKey = childSnapshot.key;
+            const childData = childSnapshot.val();
+            // ...
+            rowNum += 1;
+            var row = "<tr><td>" + rowNum + "</td><td>" + childData.name + "</td><td>" + childData.pwd + "</td><td>" + childData.sec + "</td><td>" + childData.college + "</td></tr>"
+
+            $(row).appendTo('#dataTbl');
+
+        });
+    }, {
+        onlyOnce: true
+    });
+
+
+//   });
+</script>

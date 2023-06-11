@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <link rel="stylesheet" href="footer.css">
+   <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,500,0,0" />
+</head>
+
+<body>
+   <div class='cursor' id="cursor"></div>
+   <div class="fixed-left">
+      <p class="fixed-left-text">Failure prediction of an Aircraft Engine</p>
+   </div>
+   <div class="fixed-right">
+
+      <p class="fixed-right-text">Failure prediction of an Aircraft Engine</p>
+   </div>
+   <nav>
+      <div>
+         <h2>HackHive<span class="material-symbols-outlined"
+               style="vertical-align: middle; font-size: 2rem; color: #ffeba7;">
+               hive
+            </span></h2>
+      </div>
+      <div>
+         <a href=""><button class="navbtn">History</button></a>
+         <a href="./predict.html"><button class="navbtn navbig">Predict</button></a>
+         <a href="./login.html"><button class="navbtn">Sign Up</button></a>
+      </div>
+      <div>
+         <div id="mySidepanel" class="sidepanel">
+            <a href="./index.html">Home</a>
+            <a href="#">Services</a>
+            <a href="#">Clients</a>
+            <a href="#">Contact</a>
+         </div>
+
+         <button class="openbtn" id="menu-btn" onclick="Nav()"><span class="material-symbols-outlined"
+               id="menu-open-close-btn" style="font-size: 2rem;  color: #c3c2c9;">menu</span></button>
+      </div>
+   </nav>
+
+
+   <div class="main">
+      <center><br><br><img class="flight-logo" src="svgviewer-output.svg" width="200">
+         <h1 class="main-head">Failure & remaining lifetime prediction of an Aircraft Engine using ML </h1>
+      </center>
+   </div>
+   <center>
+      <h2 style="margin-top: 4rem;">Services&nbsp;<span class="material-symbols-outlined" style="vertical-align: middle; font-size: 2rem;">
+            settings
+         </span></h2>
+   </center>
+   <div class="page-content">
+      <div class="card">
+         <div class="content">
+            <h2 class="title">Analyze engine</h2>
+            <p class="copy">Analyze the aircraft engine records to detect anomalies that may indicate engine failure or maintenance needs.</p>
+            <!-- <button class="btn">Know more</button> -->
+         </div>
+      </div>
+      <div class="card card-data">
+         <div class="content">
+            <h2 class="title">Provide data on engine health</h2>
+            <p class="copy">Data about the health condition of the aircraft engine, allows proactive maintenance and potential cost savings.</p>
+            <!-- <button class="btn">Know more</button> -->
+         </div>
+      </div>
+      <div class="card cd">
+         <div class="content">
+            <h2 class="title">Maintenance period</h2>
+            <p class="copy">To provide the maintenance period of engine, engine's remaining lifecycle, the number of an aircraft engine operates completely.</p>
+            <!-- <button class="btn">Know more</button> -->
+         </div>
+      </div>
+      <div class="card cd">
+         <div class="content">
+            <h2 class="title">Spare parts</h2>
+            <p class="copy">To predict spare part requirements before they are needed by analyzing data on component failure rates and lifecycles.</p>
+            <!-- <button class="btn">Know more</button> -->
+         </div>
+      </div>
+   </div>
+
+
+   <center>
+      <h2>What We Do&nbsp;<span class="material-symbols-outlined" style="vertical-align: middle; font-size: 2rem;">
+            question_mark
+         </span></h2>
+
+   </center>
+   <div class="what-we-do">
+      <div class="what-we-do-container">
+         <span class="material-symbols-outlined what-we-do-icon" style="font-size: 4rem; color: #ffeba7;">
+            search
+         </span>
+         <p>1. Define the scope and requirements of the project, including data sources, performance metrics, and
+            algorithms to be used.</p>
+      </div>
+      <div class="what-we-do-container">
+         <span class="material-symbols-outlined what-we-do-icon" style="font-size: 4rem; color: #ffeba7;">
+            home_storage
+         </span>
+         <p>2. Gather and preprocess data from various sources, including sensor data and historical maintenance
+            records.</p>
+      </div>
+      <div class="what-we-do-container">
+         <span class="material-symbols-outlined what-we-do-icon" style="font-size: 4rem; color: #ffeba7;">
+            call_split
+         </span>
+         <p>3. Split data into training and testing sets, typically with a ratio of 70:30. Training set is used for
+            evaluating its performance on new data.</p>
+      </div>
+      <div class="what-we-do-container">
+         <span class="material-symbols-outlined what-we-do-icon" style="font-size: 4rem; color: #ffeba7;">
+            psychology
+         </span>
+         <p>4. Train the machine learning model using the training data and the selected algorithms.</p>
+      </div>
+      <div class="what-we-do-container">
+         <span class="material-symbols-outlined what-we-do-icon" style="font-size: 4rem; color: #ffeba7;">
+            monitoring
+         </span>
+         <p>5. Evaluate the performance of the model using the testing data and the defined metrics.</p>
+      </div>
+      <div class="what-we-do-container">
+         <span class="material-symbols-outlined what-we-do-icon" style="font-size: 4rem; color: #ffeba7;">
+            build
+         </span>
+         <p>6. Refine and optimize the model based on the evaluation results.</p>
+      </div>
+      <div class="what-we-do-container">
+         <span class="material-symbols-outlined what-we-do-icon" style="font-size: 4rem; color: #ffeba7;">
+            dns
+         </span>
+         <p>7. Deploy the model into production and integrate it with the existing aircraft systems.</p>
+      </div>
+
+      <div class="what-we-do-container">
+         <span class="material-symbols-outlined what-we-do-icon" style="font-size: 4rem; color: #ffeba7;">
+            visibility
+         </span>
+         <p>8. Monitor the performance of the model in real-time and make improvements as needed.</p>
+      </div>
+   </div>
+
+
+   <center>
+      <h2 style="margin-top: 6rem;">FAQ <span class="material-symbols-outlined" style="vertical-align: middle;">
+            help
+         </span></h2>
+      <div class="faq">
+         <button class="tab-button" onclick="rotate(this)">Accordion One <span class="material-symbols-outlined"
+               style="float: right;">expand_more</span></button>
+         <div class="tab-panel">
+            <p class="tab-text">Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem LoLorem LoLorem LoLorem LoLorem
+               Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem </p>  
+         </div>
+
+         <button class="tab-button" onclick="rotate(this)"> Accordion Two <span class="material-symbols-outlined"
+               style="float: right;">expand_more</span></button>
+         <div class="tab-panel">
+            <p class="tab-text">Lorem i.</p>
+         </div>
+         <button class="tab-button" onclick="rotate(this)">Accordion Three <span class="material-symbols-outlined"
+               style="float: right;">expand_more</span></button>
+         <div class="tab-panel">
+            <p class="tab-text">Lorem ipsum d</p>
+         </div>             <img src="./email.svg">
+
+      </div>
+   </center>
+
+   <!--footer-->
+   <footer>
+         <div class="footer-div1">
+            <h2>HackHive<span class="material-symbols-outlined"
+               style="vertical-align: middle; font-size: 2rem; color: #ffeba7;">hive</span></h2>
+            <h3 class="copyright">All rights reserved &copy;</h3></div>
+            <div class="footer-div2">
+         <p style="font-family: 'Poppins', sans-serif;">Aircraft failure prediction. We aim to predict the failure of aircraft engine 
+            using classifier model of machine learning. sAlso to provide the engine's remaining lifecycle using support vector regression
+             model of machine learning<br></p><br><center style="width:55%">
+            <div class="links">
+             <img  class="img-foot"src="./mail.png">
+             <img class="img-foot"src="./whatsapp.png">
+             <img class="img-foot"src="./twitter.png">
+             <img class="img-foot"src="./instagram.png">
+             <img class="img-foot"src="./linkdin.png">
+             <img  class="img-foot" src="./facebook.png">
+            </div></center>
+            </div><br><br>
+         </div>
+            
+    
+  </footer>
+
+   <script src="index.js"></script>
+</body>
+
+</html>
