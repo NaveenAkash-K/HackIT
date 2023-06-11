@@ -1,0 +1,13 @@
+green - 1be6ad
+toggle blue - 102770
+skin color - ffeba7
+login bg - 1f2029
+font color - c3c2c9
+
+
+.rotate {
+    transform: rotate(180deg);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+

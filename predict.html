@@ -1,0 +1,187 @@
+<html lang="en">
+
+<head>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="indexstyle.css">
+   <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,500,0,0" />
+
+   <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+   <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+   <title>About Page</title>
+
+</head>
+
+<body id="body">
+
+   <div class='cursor' id="cursor"></div>
+   <div class="fixed-left">
+      <p class="fixed-left-text">Machine learning for failure prediction</p>
+   </div>
+   <div class="fixed-right">
+
+      <p class="fixed-right-text">Machine learning for failure prediction</p>
+   </div>
+   <nav>
+      <div>
+         <h2>HackHive<span class="material-symbols-outlined"
+               style="vertical-align: middle; font-size: 2rem; color: #ffeba7;">
+               hive
+            </span></h2>
+      </div>
+      <div>
+         <a href=""><button class="navbtn">History</button></a>
+         <a href=""><button class="navbtn navbig">Predict</button></a>
+         <a href="./login.html"><button class="navbtn">Sign Up</button></a>
+      </div>
+      <div>
+         <div id="mySidepanel" class="sidepanel">
+            <a href="./index.html">Home</a>
+            <a href="#">Services</a>
+            <a href="#">Clients</a>
+            <a href="#">Contact</a>
+         </div>
+
+         <button class="openbtn" id="menu-btn" onclick="Nav()"><span class="material-symbols-outlined"
+               id="menu-open-close-btn" style="font-size: 2rem;  color: #c3c2c9;">menu</span></button>
+      </div>
+   </nav>
+   <div class="main">
+      <div class="csv">
+         <H1>Upload the Engine data as a CSV file
+            <br> to predict whether the engine is in a<br>Normal state or Abnormal state <br>predicted values
+         </H1>
+         <br>
+         <textarea type="text" id="csv-input" placeholder="Parameters" rows="8" cols="60" style="background: transparent; padding: 0.5rem; border: 2px solid #ffb969; border-radius: 20px;"></textarea> <br><br>
+         &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<button class="upload" style="margin-top:2%" py-onClick="file_input()">UPLOAD CSV<span class="material-symbols-outlined"
+               style="vertical-align: middle;">upload</span></button>
+      </div>
+      <hr class="hr-line">
+      <div class="login-section">
+         <form action="" class="form">
+            <h1>Sensor Data</h1><br>
+            <input type="text" placeholder="Air temperature [k]" id="air-temp">
+            <input type="text" placeholder="Process temperature [k]" id="process-temp">
+            <input type="text" placeholder="Rotational speed [rpm]" id="rpm">
+            <input type="text" placeholder="Torque [Nm]" id="torq">
+            <input type="text" placeholder="Tool wear [min]" id="tool-wear">
+            <!-- <input class="formsubmit" type="submit" value="Predict" onclick="alert('Your information is safe with us')" name="" id=""> -->
+            
+         </form>
+         <button class="formsubmit" py-onClick="fun()">Predict</button>
+      </div>
+   </div><br><br><br>
+   <center>
+   <div id="py-output">
+      <h1 id="main-output"></h1>
+      <h3 id="output-text"></h3>
+   </div>
+   </center>   
+   <div id="chatbot">
+      <iframe width="350" height="430" allow="microphone;" src="https://console.dialogflow.com/api-client/demo/embedded/27d073ae-cc39-49c3-abe5-b29608a2f99c"></iframe>
+      </div>
+      <button id="open-chat"><span class="material-symbols-outlined" style="vertical-align: middle; color: #ffb969;" onclick="openchat();">
+         chat
+         </span></button>
+
+   <py-config>
+      packages = ["pandas","numpy","seaborn","scikit-learn","matplotlib","smtplib","email"]
+      [[fetch]]
+      from = "https://raw.githubusercontent.com/NaveenAkash-K/HackIT/main/"
+      files = ["machine failure.csv"]
+   </py-config>
+
+   <py-script>
+
+      import js
+      from js import document
+      import matplotlib.pyplot as plt
+      import pandas as pd
+      import seaborn as sns
+      from sklearn import metrics
+      from sklearn.metrics import roc_auc_score, roc_curve,f1_score, precision_score, recall_score
+      import smtplib
+      from email.mime.multipart import MIMEMultipart
+      from email.mime.text import MIMEText
+      def failure_email(failure=1,email_address='2021it0445@svce.ac.in'):
+         if failure == 1:
+            from_email = '2021it0694@svce.ac.in'
+            from_password = "3?N'rD+@"
+            # Construct email message
+            email_body = "Dear user,\n\nA new failure has been detected in your machine.\n\nPlease take appropriate action.\n\nBest regards,\nThe failure prediction team"
+            msg = MIMEMultipart()
+            msg['From'] = from_email
+            msg['To'] = email_address
+            msg['Subject'] = 'Failure Prediction Alert'
+            msg.attach(MIMEText(email_body))
+
+            # Send email
+            with smtplib.SMTP('smtp.gmail.com', 587) as smtp:
+               smtp.starttls()
+               try:
+                  smtp.login(from_email, from_password)
+                  smtp.send_message(msg)
+                  print("SENT")
+               except:
+                  print ("login error")
+
+      def fun():
+         atemp = document.getElementById('air-temp').value
+         ptemp = document.getElementById('process-temp').value
+         rpm = document.getElementById('rpm').value
+         torq = document.getElementById('torq').value
+         tool_wear = document.getElementById('tool-wear').value
+
+         lst=[[atemp,ptemp,rpm,torq,tool_wear]]
+
+
+         #display(atemp,target="output-text",append=True)
+         #display(ptemp,target="output-text",append=True)
+         #display(rpm,target="output-text",append=True)
+         #display(torq,target="output-text",append=True)
+         #display(tool_wear,target="output-text",append=True)
+
+         data=pd.read_csv('machine failure.csv')
+         y = data['Machine failure']
+         data.drop(['UDI','TWF',"HDF","PWF","OSF","RNF","Product ID","Type","Machine failure"],inplace=True,axis=1)
+         x=data
+         from sklearn.model_selection import train_test_split
+         x_train,x_test,y_train,y_test=train_test_split(x,y,random_state=1,test_size=0.3)
+         from sklearn.preprocessing import MinMaxScaler
+         minmax = MinMaxScaler()
+         train_minmax = minmax.fit_transform(x)
+   
+         X = pd.DataFrame(train_minmax, columns=x_train.columns)
+         from sklearn.model_selection import train_test_split
+         X_train,X_test,y_train,y_test=train_test_split(X,y,random_state=1,test_size=0.3)
+         from sklearn.ensemble import RandomForestClassifier
+   
+         rfc=RandomForestClassifier()
+         rfc.fit(X_train,y_train)
+         pred=[[280.4,290.3,500,39.9,170],[220.4,240.3,400,29.9,110],[230.4,190.3,540,39.9,180],[210.4,280.3,520,19.9,120],[250.4,210.3,420,69.9,200]]
+         pred.extend(lst)
+   
+         minmax = MinMaxScaler()
+         train_minmax = minmax.fit_transform(pred)
+         pred = pd.DataFrame(train_minmax, columns=x_test.columns)
+         p=rfc.predict(pred)
+         if p[5]==0:
+            display('Engine Normal',target="main-output")
+            display('All Vitals are Good',target="output-text")
+         else:
+            failure_email(pd[5])
+            display("Engine abnormal",target="main-output")
+            display('Engine Maintenance Required',target="output-text")
+   
+      def file_input():
+         model_2=document.getElementById('csv-input').value
+         
+      </py-script>
+      
+      
+   </py-script>
+   <script src="./index.js"></script>
+
+</body>
+
+</html>
